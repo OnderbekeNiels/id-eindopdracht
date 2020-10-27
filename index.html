@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>MY PARK GHENT</title>
+    <meta
+      name="description"
+      content="MY PARK GHENT is an webapplication that 
+        allows you to find the main parkings in Ghent. 
+        You can search for a parking on the map and 
+        see how many places there are left. It makes finding a parking place much easier without having to stress about a free space.  "
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script src="./script/app.js"></script>
+  </head>
+  <body>
+    <main class="c-main-content-grid">
+      <header class="c-header">
+        <img
+          class="c-header__logo"
+          src="./img/logo_myparkghent-01.jpg"
+          alt=""
+        />
+        <p class="c-header__content">MY PARK GHENT</p>
+      </header>
+      <div class="c-toggle">
+        <p class="c-toggle-option">
+          <input
+            class="c-toggle-option__input--map c-toggle-option__input o-hide-accessible"
+            type="radio"
+            name="toggle"
+            checked
+            id="map"
+          />
+          <label
+            class="c-toggle-option__label c-toggle-option__label--left"
+            for="map"
+            >MAP</label
+          >
+        </p>
+        <p class="c-toggle-option">
+          <input
+            class="c-toggle-option__input c-toggle-option__input--table o-hide-accessible"
+            type="radio"
+            name="toggle"
+            id="table"
+          />
+          <label
+            class="c-toggle-option__label c-toggle-option__label--right"
+            for="table"
+            >TABLE</label
+          >
+        </p>
+      </div>
+      <div class="c-visualized-data">
+        <div class="c-map" id="mapid"></div>
+        <!-- <div class="c-map">test</div> -->
+        <div class="c-table o-hide-accessible">table in progress</div>
+      </div>
+      <footer class="c-footer">
+        <p class="c-footer__content">© Niels Onderbeke - 2MCT1</p>
+      </footer>
+    </main>
+  </body>
+</html>
