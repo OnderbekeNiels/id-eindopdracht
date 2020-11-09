@@ -42,7 +42,7 @@
       <div class="c-toggle">
         <p class="c-toggle-option">
           <input
-            class="c-toggle-option__input--map c-toggle-option__input o-hide-accessible"
+            class="c-toggle-option__input--map c-toggle-option__input u-hide-accessible"
             type="radio"
             name="toggle"
             checked
@@ -56,9 +56,10 @@
         </p>
         <p class="c-toggle-option">
           <input
-            class="c-toggle-option__input c-toggle-option__input--table o-hide-accessible"
+            class="c-toggle-option__input c-toggle-option__input--table u-hide-accessible"
             type="radio"
             name="toggle"
+            
             id="table"
           />
           <label
@@ -69,9 +70,19 @@
         </p>
       </div>
       <div class="c-visualized-data">
-        <div class="c-map" id="mapid"></div>
-        <!-- <div class="c-map">test</div> -->
-        <div class="c-table o-hide-accessible">table in progress</div>
+        <div class="c-map " id="mapid"></div>
+        <div class="c-table u-hide-accessible">
+          <table class="c-table__table">
+            <tr class="c-table__table-row c-table_table-row--header">
+              <th class="c-table__table-header u-mr__md">Parking</th>
+              <th class="c-table__table-header u-text-align--right"> Places left</th>
+            </tr>
+            <tr class="c-table__table-row">
+              <td class="c-table__table-data u-pr__md">Data loading</td>
+              <td class="c-table__table-data u-text-align--right">Data loading</td>
+            </tr>
+          </table>
+        </div>
       </div>
       <footer class="c-footer">
         <p class="c-footer__content">© Niels Onderbeke - 2MCT1</p>

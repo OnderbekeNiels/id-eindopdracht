@@ -43,6 +43,30 @@ const showPointers = function (records) {
   }
 };
 
+const showTable = function (records) {
+  let htmlTable = `<table class="c-table__table">
+    <tr class="c-table__table-row c-table_table-row--header">
+      <th class="c-table__table-header u-mr__md">Parking</th>
+      <th class="c-table__table-header u-text-align--right"> Places left</th>
+    </tr>`;
+  for (const record of records) {
+    let colorClass;
+    if (record.fields.availablecapacity <= 50) {
+      colorClass = "u-space-left--small";
+    } else if (record.fields.availablecapacity <= 150) {
+      colorClass = "u-space-left--medium";
+    } else {
+      colorClass = "u-space-left--large";
+    }
+    htmlTable += ` <tr class="c-table__table-row">
+    <td class="c-table__table-data u-pr__md">${record.fields.name}</td>
+    <td class="c-table__table-data u-text-align--right ${colorClass}">${record.fields.availablecapacity}</td>
+  </tr>`;
+  }
+  htmlTable += `</table>`
+  document.querySelector(".c-table").innerHTML = htmlTable;
+};
+
 const listenToToggle = function () {
   const mapInput = document.querySelector(".c-toggle-option__input--map"),
     tableInput = document.querySelector(".c-toggle-option__input--table"),
@@ -53,19 +77,21 @@ const listenToToggle = function () {
     input.addEventListener("change", function () {
       if (mapInput.checked) {
         console.log("show map");
-        table.classList.add("o-hide-accessible");
-        map.classList.remove("o-hide-accessible");
+        table.classList.add("u-hide-accessible");
+        map.classList.remove("u-hide-accessible");
+        getMap();
       }
       if (tableInput.checked) {
         console.log("show table");
-        table.classList.remove("o-hide-accessible");
-        map.classList.add("o-hide-accessible");
+        table.classList.remove("u-hide-accessible");
+        map.classList.add("u-hide-accessible");
+        getTable();
       }
     });
   }
 };
 
-const getAPI = async function () {
+const getMap = async function () {
   let endpoint = `https://data.stad.gent/api/records/1.0/search/?dataset=bezetting-parkeergarages-real-time&q=&rows=100&facet=description`;
   try {
     const response = await fetch(endpoint);
@@ -77,8 +103,20 @@ const getAPI = async function () {
   }
 };
 
+const getTable = async function () {
+  let endpoint = `https://data.stad.gent/api/records/1.0/search/?dataset=bezetting-parkeergarages-real-time&q=&rows=100&facet=description`;
+  try {
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    console.log(data);
+    showTable(data.records);
+  } catch (error) {
+    console.error("An error occured, we handled it.", error);
+  }
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   initMap();
-  getAPI();
+  getMap();
   listenToToggle();
 });
