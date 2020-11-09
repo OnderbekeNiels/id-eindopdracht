@@ -461,16 +461,13 @@ input::placeholder {
   --action-borderColor: var(--global-color-dark);
   box-shadow: 0 0 0 3px var(--global-color-light--transparent);
 }
-
-
-
 .c-visualized-data {
   width: 100%;
+  max-width: 600px;
   height: 100%;
   display: flex;
   justify-content: center;
 }
-
 .c-map {
   border-radius: var(--global-borderRadius--arround);
   box-shadow: var(--global-boxShadow);
@@ -480,38 +477,33 @@ input::placeholder {
   width: 100%;
 }
 
-/*
-      COMPONENT: Table
-  */
-
 .c-table{
   margin: 0px 16px;
-  height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  
-}
-
-.c-table__table{
-  margin: 0px;
 }
 
 .c-table__table-row{
   text-align: left;
-  max-width: 24em;
+  max-width: 27em;
 }
 
 .c-table__table-header{
   font-size: 20px;
   font-weight: 600;
-  min-width: 75px;
 }
 
 .c-table__table-data{
   font-size: 18px;
   font-weight: 400;
   color: var(--global-color-neutral);
+}
+
+.c-table__col--sm{
+  min-width: 100%;
+}
+
+.c-table__col--md{
+  min-width: 100%;
 }
 
 .u-mb__sm {

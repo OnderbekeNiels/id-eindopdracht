@@ -44,11 +44,14 @@ const showPointers = function (records) {
 };
 
 const showTable = function (records) {
-  let htmlTable = `<table class="c-table__table">
-    <tr class="c-table__table-row c-table_table-row--header">
-      <th class="c-table__table-header u-mr__md">Parking</th>
-      <th class="c-table__table-header u-text-align--right"> Places left</th>
-    </tr>`;
+  let htmlTable = `<tr class="c-table__table-row c-table_table-row--header">
+  <th class="c-table__table-header c-table__col--md">Parking</th>
+  <th
+    class="c-table__table-header c-table__col--sm u-text-align--right"
+  >
+    Places left
+  </th>
+</tr>`;
   for (const record of records) {
     let colorClass;
     if (record.fields.availablecapacity <= 50) {
@@ -59,11 +62,10 @@ const showTable = function (records) {
       colorClass = "u-space-left--large";
     }
     htmlTable += ` <tr class="c-table__table-row">
-    <td class="c-table__table-data u-pr__md">${record.fields.name}</td>
-    <td class="c-table__table-data u-text-align--right ${colorClass}">${record.fields.availablecapacity}</td>
+    <td class="c-table__table-data u-pr__md c-table__col--md" >${record.fields.name}</td>
+    <td class="c-table__table-data u-text-align--right c-table__col--sm ${colorClass}">${record.fields.availablecapacity}</td>
   </tr>`;
   }
-  htmlTable += `</table>`
   document.querySelector(".c-table").innerHTML = htmlTable;
 };
 
