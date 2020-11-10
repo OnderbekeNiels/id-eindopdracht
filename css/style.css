@@ -480,6 +480,10 @@ input::placeholder {
 .c-table{
   margin: 0px 16px;
   width: 100%;
+  background-color: white;
+  padding: 8px;
+  border-radius: var(--global-borderRadius--arround);
+  box-shadow: var(--global-boxShadow);
 }
 
 .c-table__table-row{
