@@ -318,7 +318,7 @@ input::placeholder {
 .c-main-content-grid {
   display: grid;
   grid-template-columns: minmax(15em, 1fr);
-  grid-template-rows: minmax(3.5em, 3.5em) minmax(2em, 2em) minmax(15em, 1fr) minmax(
+  grid-template-rows: minmax(3.5em, 3.5em) minmax(2em, 2em) minmax(18.75em, 1fr) minmax(
       2em,
       2em
     );
