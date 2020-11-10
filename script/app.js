@@ -8,7 +8,8 @@ let map, layergroup;
 
 const maakMarker = function (coords, adres, placesLeft, lastUpdate) {
   // console.log(coords)
-  const lastUpdateTime = new Date(Date.parse(lastUpdate));
+  const lastUpdateTime = new Date(lastUpdate);
+  lastUpdateTime.setHours((lastUpdateTime.getHours()-2));
   let colorClass;
   if (placesLeft <= 50) {
     colorClass = "u-space-left--small";
