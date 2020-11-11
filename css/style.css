@@ -47,7 +47,7 @@ html {
   font-feature-settings: "zero" 1;
 }
 
-.is-landing-page {
+.is-landingspagina {
   --landingpage-backgroundColor: linear-gradient(
     var(--global-color-dark),
     var(--global-color-light)
