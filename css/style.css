@@ -531,7 +531,7 @@ input::placeholder {
 .c-custom-submit {
   font-size: 18px;
   line-height: 24px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--global-color-light);
   background-color: var(--global-color-action);
   border: 1px solid var(--action-borderColor, var(--global-color-action));
