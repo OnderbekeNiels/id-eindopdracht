@@ -317,7 +317,7 @@ input::placeholder {
 
 .c-main-content-grid {
   display: grid;
-  grid-template-columns: minmax(15em, 1fr);
+  grid-template-columns: minmax(15em, 1fr) minmax(15em, 1fr);
   grid-template-rows: minmax(3.5em, 3.5em) minmax(2em, 2em) minmax(18.75em, 1fr) minmax(
       2em,
       2em
@@ -332,8 +332,45 @@ input::placeholder {
       COMPONENT: grid landindspagina
   */
 
-.c-container__landingspagina{
+.c-ladindingspagina__container{
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(7em, 13em) minmax(28em, 1fr);
+  gap: 1em;
+  height: 100vh;
+}
+
+.c-landingspagina__header{
+  text-align: center;
+  grid-column-start: span 2;
+}
+
+
+.c-landingspagina__image{
+  justify-self: end;
+}
+
+
+/*
+      COMPONENT: c-content
+  */
+
+.c-content__title{
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 25px;
+  margin: 0px 16px 8px 0px;
+  color: var(--global-color-light);
+  text-align: left;
+}
+
+.c-content__description{
+  font-size: 1.125em;
+  font-weight: 400;
+  line-height: 23px;
+  margin: 0px 16px 16px 0px;
+  color: var(--global-color-light);
+  text-align: left;
 }
 
 /*
@@ -372,31 +409,19 @@ input::placeholder {
       COMPONENT: c-title
   */
 
-.c-title-lg {
-  font-size: 36px;
-  font-weight: 500;
-  line-height: 45px;
-  margin-bottom: 0;
+.c-title--lg {
+  font-size: 3em;
+  font-weight: 600;
+  line-height: 64px;
+  margin: 48px 8px 16px 8px;
   color: var(--global-color-light);
 }
 
-.c-title-md {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 23px;
-  margin-bottom: 0;
-  color: var(--global-color-light);
-  text-align: center;
-}
-
-/*
-      COMPONENT: c-description
-  */
-.c-description {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-  margin: 0;
+.c-title--md {
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 25px;
+  margin: 0px 8px;
   color: var(--global-color-light);
   text-align: center;
 }
