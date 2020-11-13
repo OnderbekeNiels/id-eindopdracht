@@ -6,7 +6,7 @@ const copyright =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>';
 let map, layergroup;
 
-const maakMarker = function (coords, adres, placesLeft, lastUpdate) {
+const maakMarker = function (coords, adres, name, placesLeft, lastUpdate) {
   // console.log(coords)
   const lastUpdateTime = new Date(lastUpdate);
   lastUpdateTime.setHours((lastUpdateTime.getHours()-2));
@@ -22,7 +22,7 @@ const maakMarker = function (coords, adres, placesLeft, lastUpdate) {
   layergroup.clearLayers();
   let marker = L.marker(arr_coords).addTo(layergroup);
   marker.bindPopup(
-    `<p class="c-marker__content c-marker__content--places ${colorClass}">${placesLeft} places left</p><p class="c-marker__content c-marker__content--address">${adres}</p><p class="c-marker__content c-marker__content--update-time">Last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
+    `<p class="c-marker__content c-marker__content--places ${colorClass}">${placesLeft} places left</p><p class="c-marker__content c-marker__content--address">${name}</p><p class="c-marker__content">${adres}</p><p class="c-marker__content c-marker__content--update-time">Last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
   );
 };
 
@@ -38,6 +38,7 @@ const showPointers = function (records) {
     maakMarker(
       record.fields.geo_location,
       record.fields.address,
+      record.fields.name,
       record.fields.availablecapacity,
       record.fields.lastupdate
     );
