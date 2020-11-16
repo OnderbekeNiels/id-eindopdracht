@@ -554,7 +554,7 @@ input::placeholder {
   --action-borderColor: var(--global-color-dark);
   box-shadow: 0 0 0 3px var(--global-color-light--transparent);
 }
-.c-visualized-data {
+.c-visualised-data {
   width: 100%;
   max-width: 600px;
   height: 100%;
