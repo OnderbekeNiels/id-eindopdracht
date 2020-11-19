@@ -31,7 +31,7 @@ const maakMarker = function (coords, adres, name, placesLeft, lastUpdate) {
   layergroup.clearLayers();
   let marker = L.marker(arr_coords).addTo(layergroup);
   marker.bindPopup(
-    `<p class="c-marker__content c-marker__content--places ${colorClass}">${placesLeft} places left</p><p class="c-marker__content c-marker__content--address">${name}</p><p class="c-marker__content">${adres}</p><p class="c-marker__content c-marker__content--update-time">Last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
+    `<p class="c-marker-content c-marker-content__places-left ${colorClass}">${placesLeft} places left</p><p class="c-marker-content c-marker-content__name">${name}</p><p class="c-marker-content">${adres}</p><p class="c-marker-content">last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
   );
 };
 
