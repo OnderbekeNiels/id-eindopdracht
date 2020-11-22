@@ -54,6 +54,7 @@ html {
     var(--global--color--dark),
     var(--global--color--light)
   );
+  /* --landingspagina--backgroundColor: var(--global--color--dark) */
 }
 
 *,
@@ -421,7 +422,6 @@ input::placeholder {
 
 .c-content-landingspagina {
   justify-self: center;
-  max-width: 20em;
   margin: 0 var(--global--white-space--md);
 }
 
@@ -449,7 +449,6 @@ input::placeholder {
 
  .c-image-landingspagina{
    justify-self: center;
-   max-width: 20em;
    margin: 0 var(--global--white-space--md) var(--global--white-space--md) var(--global--white-space--md);
  } 
 
@@ -529,32 +528,49 @@ input::placeholder {
   justify-self: center;
   align-self: center;
   max-width: 20.5em;
-  margin: 0 16px 0 16px;
+  margin: 0 var(--global--white-space--md) 0 var(--global--white-space--md);
 }
 
 @media screen and (min-width: 688px) {
   .c-grid-landindgspagina {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: calc(var(--global--baseline)*19) auto;
+    gap: calc(var(--global--baseline)*8) calc(var(--global--baseline)*4);
   }
 
   .c-header-landingspagina{
     grid-column: span 2;
+    align-self: start;
+  }
+
+  .c-header-landingspagina__title{
+    font-size: 56px;
+    line-height: calc(var(--global--baseline) * 8);
+    margin-top: calc(var(--global--baseline)*6);
+  }
+
+  .c-header-landingspagina__sub-title{
+    font-size: 24px;
+    line-height: calc(var(--global--baseline) * 4);
   }
 
   .c-content-landingspagina{
+    align-self: start;
     grid-column: 2;
     justify-self: start;
     margin-left: 0;
+    margin-bottom: calc(var(--global--baseline)*2);
   }
 
   .c-image-landingspagina{
+    align-self: start;
     grid-column: 1;
     grid-row: 2;
     justify-self: end;
     margin-right: 0;
   }
 }
+
 
 .u-mb__sm {
   margin-bottom: var(--global--baseline);
@@ -572,12 +588,8 @@ input::placeholder {
   padding-right: calc(var(--global--baseline) * 2);
 }
 
-.u-max-width__sm {
-  max-width: 19.5em;
-}
-
-.u-max-width__md {
-  max-width: 20.5em;
+.u-max-width__content {
+  max-width: 20em;
 }
 
 .u-space-left--small {
@@ -598,4 +610,21 @@ input::placeholder {
 
 .u-hide-accessible {
   display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .u-max-width__content{
+    max-width: 25em;
+  }
+
+  .c-content-landingspagina__title{
+    font-size: 24px;
+    line-height: calc(var(--global--baseline)*4);
+  }
+
+  .c-content-landingspagina__description{
+    font-size: 18px;
+    line-height: calc(var(--global--baseline)*3);
+  }
+
 }
