@@ -535,7 +535,7 @@ input::placeholder {
   .c-grid-landindgspagina {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: calc(var(--global--baseline)*19) auto;
-    gap: calc(var(--global--baseline)*8) calc(var(--global--baseline)*4);
+    gap: calc(var(--global--baseline)*8);
   }
 
   .c-header-landingspagina{
@@ -615,6 +615,10 @@ input::placeholder {
 @media screen and (min-width: 1440px) {
   .u-max-width__content{
     max-width: 25em;
+  }
+
+  .c-grid-landindgspagina{
+    grid-column-gap:  calc(var(--global--baseline)*9);
   }
 
   .c-content-landingspagina__title{
