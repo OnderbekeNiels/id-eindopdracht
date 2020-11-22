@@ -449,8 +449,24 @@ input::placeholder {
 }
 
 /*
+      COMPONENT: Image
+  */
+
+ .c-image-landingspagina{
+   justify-self: center;
+   max-width: 20em;
+   margin-bottom: 0 var(--global-white-space-md) var(--global-white-space-md) var(--global-white-space-md);
+ } 
+
+ .c-image-landingspagina__img{
+   width: auto;
+   height: auto;
+ }
+
+/*
       COMPONENT: Custom input
   */
+
 .c-custom-input {
   -webkit-appearance: none;
   -moz-appearance: none;
