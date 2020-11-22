@@ -331,7 +331,7 @@ input::placeholder {
   width: 100%;
   max-width: 32em;
   background-color: white;
-  padding: var(--global--white--space--s);
+  padding: var(--global--white-space--s);
   border-radius: var(--global--border--borderRadius);
   box-shadow: var(--global--border--boxShadow);
 }
