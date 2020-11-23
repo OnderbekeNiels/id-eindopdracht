@@ -22,16 +22,16 @@ const copyright =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>';
 let map, layergroup;
 
-const maakMarker = function (coords, adres, name, placesLeft, lastUpdate) {
+const maakMarker = function (parkingObject) {
   // console.log(coords)
-  const lastUpdateTime = new Date(lastUpdate);
+  const lastUpdateTime = new Date(parkingObject.updateTime);
   lastUpdateTime.setHours(lastUpdateTime.getHours() - 2);
-  const colorClass = getCapacityColor(placesLeft);
-  const arr_coords = coords;
+  const colorClass = getCapacityColor(parkingObject.placesLeft);
+  const arr_coords = parkingObject.coord;
   layergroup.clearLayers();
   let marker = L.marker(arr_coords).addTo(layergroup);
   marker.bindPopup(
-    `<p class="c-marker-content c-marker-content__places-left ${colorClass}">${placesLeft} places left</p><p class="c-marker-content c-marker-content__name">${name}</p><p class="c-marker-content">${adres}</p><p class="c-marker-content">last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
+    `<p class="c-marker-content c-marker-content__places-left ${colorClass}">${parkingObject.placesLeft} places left</p><p class="c-marker-content c-marker-content__name">${parkingObject.name}</p><p class="c-marker-content">${parkingObject.address}</p><p class="c-marker-content">last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
   );
 };
 
@@ -44,13 +44,8 @@ const initMap = function () {
 const showPointers = function (records) {
   for (const record of records) {
     layergroup = L.layerGroup().addTo(map);
-    maakMarker(
-      record.fields.geo_location,
-      record.fields.address,
-      record.fields.name,
-      record.fields.availablecapacity,
-      record.fields.lastupdate
-    );
+    const parkingObject = {coord: record.fields.geo_location, address: record.fields.address, name: record.fields.name, placesLeft: record.fields.availablecapacity, updateTime: record.fields.lastupdate}
+    maakMarker(parkingObject);
   }
 };
 
@@ -59,7 +54,6 @@ const getMap = async function () {
   try {
     const response = await fetch(endpoint);
     const data = await response.json();
-    console.log(data);
     showPointers(data.records);
   } catch (error) {
     console.error("An error occured, we handled it.", error);
@@ -93,7 +87,6 @@ const getTable = async function () {
   try {
     const response = await fetch(endpoint);
     const data = await response.json();
-    console.log(data);
     showTable(data.records);
   } catch (error) {
     console.error("An error occured, we handled it.", error);
@@ -111,13 +104,11 @@ const listenToToggle = function () {
   for (const input of inputs) {
     input.addEventListener("change", function () {
       if (mapInput.checked) {
-        console.log("show map");
         table.classList.add("u-hide-accessible");
         map.classList.remove("u-hide-accessible");
         getMap();
       }
       if (tableInput.checked) {
-        console.log("show table");
         table.classList.remove("u-hide-accessible");
         map.classList.add("u-hide-accessible");
         getTable();
