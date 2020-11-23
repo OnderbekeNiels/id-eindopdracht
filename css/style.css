@@ -577,7 +577,7 @@ input::placeholder {
 }
 
 .u-max-width__content {
-  max-width: 20em;
+  max-width: 22em;
 }
 
 .u-space-left--small {
@@ -602,7 +602,7 @@ input::placeholder {
 
 @media screen and (min-width: 1440px) {
   .u-max-width__content{
-    max-width: 25em;
+    max-width: 26em;
   }
 
   .c-grid-landindgspagina{
