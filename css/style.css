@@ -13,7 +13,7 @@
   --global--white-space--lg: calc(var(--global--baseline) * 3);
   --global--white-space--xl: calc(var(--global--baseline) * 4);
 
-  /* colors */
+  /* Colors */
   --global--color--light: #ffffff;
   --global--color--light--transparent: #ffffffd3;
   --global--color--dark: #0076ee;
@@ -21,7 +21,7 @@
   --global--color--neutral: #484848;
   --global--color--action--transparent: #ff00b28a;
 
-  /* boders */
+  /* Boders */
   --global--border--borderRadius: 20px;
   --global--border--boxShadow: 0 4px 6px 0 rgba(0, 0, 0, 0.29);
 }
@@ -466,58 +466,46 @@ input::placeholder {
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  border: 1px solid var(--action-borderColor, var(--global--color--action));
   border-radius: var(--global--border--borderRadius);
   font-family: inherit;
   color: var(--global--color--action);
   font-size: 18px;
   line-height: 24px;
-  padding: 11px 0px 11px 8px;
   outline: none;
 }
 
-.c-custom-input::placeholder {
+.c-custom-input__email{
+  padding: 11px 0px 11px 16px;
+  border: 1px solid var(--c-custom-input__email--borderColor, var(--global--color--action));
+}
+
+.c-custom-input__email::placeholder {
   color: var(--global--color--action);
   font-size: 18px;
   line-height: 24px;
-  padding-left: 8px;
+}
+
+.c-custom-input__submit {
+  font-weight: 600;
+  color: var(--global--color--light);
+  background-color: var(--global--color--action);
+  border: 1px solid var(--c-custom-input__submit--borderColor, var(--global--color--action));
+  text-align: center;
+  padding: 11px 0px 11px 0px;
+}
+
+.c-custom-input:hover {
+  --c-custom-input__submit--borderColor: var(--global--color--light);
+  --c-custom-input__email--borderColor: var(--global--color--dark);
+  box-shadow: 0 0 0 3px var(--global--color--action);
 }
 
 .c-custom-input:active,
 .c-custom-input:focus {
-  --action-borderColor: var(--global--color--dark);
-  box-shadow: 0 0 0 3px var(--global--color--action);
+  box-shadow: 0 0 0 3px var(--global--color--dark);
 }
 
-.c-custom-input:hover {
-  --action-borderColor: var(--global--color--dark);
-  box-shadow: 0 0 0 3px var(--global--color--light--transparent);
-}
 
-.c-custom-submit {
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 600;
-  color: var(--global--color--light);
-  background-color: var(--global--color--action);
-  border: 1px solid var(--action--borderColor, var(--global--color--action));
-  border-radius: var(--global--border--borderRadius);
-  text-align: center;
-  width: 100%;
-  padding: 11px 0px 11px 0px;
-  outline: none;
-}
-
-.c-custom-submit:active,
-.c-custom-submit:focus {
-  --action-borderColor: var(--global--color--dark);
-  box-shadow: 0 0 0 3px var(--global--color--action);
-}
-
-.c-custom-submit:hover {
-  --action-borderColor: var(--global--color--dark);
-  box-shadow: 0 0 0 3px var(--global--color--light--transparent);
-}
 
 .c-landingspagina__image {
   justify-self: center;
