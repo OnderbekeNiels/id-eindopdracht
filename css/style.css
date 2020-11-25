@@ -312,7 +312,7 @@ input::placeholder {
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 0px var(--global-white-space-md) var(--global-white-space-md)
+  padding: 0px var(--global-white-space-md) 0px
     var(--global-white-space-md);
 }
 
@@ -384,13 +384,22 @@ input::placeholder {
 }
 
 /*
+      COMPONENT: Footer
+  */
+
+.c-footer{
+  margin-bottom: var(--global-white-space-md);
+  color: var(--global-color-action);
+  font-size: 14px;
+}
+
+/*
       COMPONENT: Grid landingspagina
   */
 
 .c-grid-landindgspagina {
   display: grid;
   grid-template-columns: minmax(15em, auto);
-  grid-template-rows: auto auto auto;
   gap: 1em;
   min-height: 100vh;
 }
@@ -463,6 +472,20 @@ input::placeholder {
 }
 
 /*
+      COMPONENT: Footer
+  */
+
+.c-footer-landingspagina{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: var(--global-white-space-md);
+  color: var(--global-color-action);
+  font-size: 14px;
+}
+
+
+/*
       COMPONENT: Custom input
   */
 
@@ -515,7 +538,7 @@ input::placeholder {
 @media screen and (min-width: 688px) {
   .c-grid-landindgspagina {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: calc(var(--global-baseline) * 19) auto;
+    grid-template-rows: auto 1fr auto;
     gap: calc(var(--global-baseline) * 8);
   }
 
@@ -527,7 +550,7 @@ input::placeholder {
   .c-header-landingspagina__title {
     font-size: 56px;
     line-height: calc(var(--global-baseline) * 8);
-    margin-top: calc(var(--global-baseline) * 6);
+    margin-top: var(--global-white-space-xl);
   }
 
   .c-header-landingspagina__sub-title {
@@ -549,6 +572,10 @@ input::placeholder {
     grid-row: 2;
     justify-self: end;
     margin-right: 0;
+  }
+
+  .c-footer-landingspagina{
+    grid-column: span 2;
   }
 }
 
