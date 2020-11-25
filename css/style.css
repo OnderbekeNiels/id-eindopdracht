@@ -4,14 +4,14 @@
 
 :root {
   /* Baseline */
-  --global--baseline: 8px;
+  --global-baseline: 8px;
 
   /* Whitespace */
 
-  --global-white-space-s: var(--global--baseline);
-  --global-white-space-md: calc(var(--global--baseline) * 2);
-  --global-white-space-lg: calc(var(--global--baseline) * 3);
-  --global-white-space-xl: calc(var(--global--baseline) * 4);
+  --global-white-space-s: var(--global-baseline);
+  --global-white-space-md: calc(var(--global-baseline) * 2);
+  --global-white-space-lg: calc(var(--global-baseline) * 3);
+  --global-white-space-xl: calc(var(--global-baseline) * 4);
 
   /* Colors */
   --global-color-light: #ffffff;
@@ -53,7 +53,7 @@ html {
 }
 
 .is-landingspagina {
-  --landingspagina--backgroundColor: linear-gradient(
+  --landingspagina-backgroundColor: linear-gradient(
     var(--global-color-dark),
     var(--global-color-light)
   );
@@ -287,7 +287,7 @@ input::placeholder {
   padding: 3px 0px;
   width: 100%;
   line-height: calc(var(--global-baseline) * 3);
-  border: 1px solid var(--global-color--action);
+  border: 1px solid var(--global-color-action);
   color: var(--global-color-action-transparent);
 }
 
