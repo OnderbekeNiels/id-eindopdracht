@@ -75,13 +75,13 @@ html {
 
 ::-moz-selection {
   background: var(--global-color-action);
-  color: white;
+  color: var(--global-color-light);
   text-shadow: none;
 }
 
 ::selection {
   background: var(--global-color-action);
-  color: white;
+  color: var(--global-color-light);
   text-shadow: none;
 }
 
@@ -337,10 +337,11 @@ input::placeholder {
 .c-table {
   width: 100%;
   max-width: 32rem;
-  background-color: white;
+  background-color: var(--global-color-light);
   padding: var(--global-white-space-s);
   border-radius: var(--global-border-borderRadius);
   box-shadow: var(--global-border-boxShadow);
+  margin: 0;
 }
 
 .c-table__table-row {
@@ -364,7 +365,7 @@ input::placeholder {
 
 .c-marker-content {
   text-align: center;
-  font-size: var(--global-line-heigt);
+  font-size: 1rem;
   line-height: calc(var(--global-baseline) * 2);
   font-weight: 400;
 }
@@ -415,7 +416,7 @@ input::placeholder {
   justify-self: center;
   text-align: center;
   font-weight: 700;
-  color: white;
+  color: var(--global-color-light);
   margin: 0 var(--global-white-space-md);
 }
 
