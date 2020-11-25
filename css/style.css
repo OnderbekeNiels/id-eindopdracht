@@ -41,11 +41,8 @@ html {
   line-height: 1.5;
   color: var(--global-color-dark);
   background-color: var(--global-color-light);
-  background: var(
-    --landingspagina-backgroundColor,
-    var(--global-color-light)
-  );
-  font-family: signo, sans-serif;
+  background: var(--landingspagina-backgroundColor, var(--global-color-light));
+  font-family: 'Kanit', sans-serif;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
