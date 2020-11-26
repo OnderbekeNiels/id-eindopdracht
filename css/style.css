@@ -313,11 +313,14 @@ input::placeholder {
   */
 
 .c-data {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 0px var(--global-white-space-md) 0px var(--global-white-space-md);
+  overflow: hidden;
+  /* padding: 0 var(--global-white-space-md); */
+  box-sizing: border-box;
 }
 
 /*
@@ -325,11 +328,17 @@ input::placeholder {
   */
 
 .c-map {
+  position: absolute;
   border-radius: var(--global-border-borderRadius);
   box-shadow: var(--global-border-boxShadow);
   align-self: center;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 2rem);
+  transition: transform 1s;
+}
+
+.c-map--hide {
+  transform: translateX(-100vw);
 }
 
 /*
@@ -337,13 +346,19 @@ input::placeholder {
   */
 
 .c-table {
-  width: 100%;
+  position: absolute;
+  width: calc(100% - 2rem);
   max-width: 32rem;
   background-color: var(--global-color-light);
   padding: var(--global-white-space-s);
   border-radius: var(--global-border-borderRadius);
   box-shadow: var(--global-border-boxShadow);
   margin: 0;
+  transition: transform 1s;
+}
+
+.c-table--hide {
+  transform: translateX(100vw);
 }
 
 .c-table__table-row {

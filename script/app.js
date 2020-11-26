@@ -31,7 +31,13 @@ const maakMarker = function (parkingObject) {
   layergroup.clearLayers();
   let marker = L.marker(arr_coords).addTo(layergroup);
   marker.bindPopup(
-    `<p class="c-marker-content c-marker-content__places-left ${colorClass}">${parkingObject.placesLeft} places left</p><p class="c-marker-content c-marker-content__name">${parkingObject.name}</p><p class="c-marker-content">${parkingObject.address}</p><p class="c-marker-content">last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
+    `<p class="c-marker-content c-marker-content__places-left ${colorClass}">${
+      parkingObject.placesLeft
+    } places left</p><p class="c-marker-content c-marker-content__name">${
+      parkingObject.name
+    }</p><p class="c-marker-content">${
+      parkingObject.address
+    }</p><p class="c-marker-content">last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
   );
 };
 
@@ -44,7 +50,13 @@ const initMap = function () {
 const showPointers = function (records) {
   for (const record of records) {
     layergroup = L.layerGroup().addTo(map);
-    const parkingObject = {coord: record.fields.geo_location, address: record.fields.address, name: record.fields.name, placesLeft: record.fields.availablecapacity, updateTime: record.fields.lastupdate}
+    const parkingObject = {
+      coord: record.fields.geo_location,
+      address: record.fields.address,
+      name: record.fields.name,
+      placesLeft: record.fields.availablecapacity,
+      updateTime: record.fields.lastupdate,
+    };
     maakMarker(parkingObject);
   }
 };
@@ -104,13 +116,13 @@ const listenToToggle = function () {
   for (const input of inputs) {
     input.addEventListener("change", function () {
       if (mapInput.checked) {
-        table.classList.add("u-hide-accessible");
-        map.classList.remove("u-hide-accessible");
+        table.classList.add("c-table--hide");
+        map.classList.remove("c-map--hide");
         getMap();
       }
       if (tableInput.checked) {
-        table.classList.remove("u-hide-accessible");
-        map.classList.add("u-hide-accessible");
+        table.classList.remove("c-table--hide");
+        map.classList.add("c-map--hide");
         getTable();
       }
     });
