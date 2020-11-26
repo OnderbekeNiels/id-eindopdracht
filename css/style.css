@@ -282,6 +282,7 @@ input::placeholder {
 }
 
 .c-toggle-option__label {
+  cursor: pointer;
   font-size: 1rem;
   font-weight: 700;
   padding: calc(3rem / var(--global-font-size)) 0px;
@@ -289,6 +290,7 @@ input::placeholder {
   line-height: var(--global-line-heigt);
   border: 1px solid var(--global-color-action);
   color: var(--global-color-action-transparent);
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 
 .c-toggle-option__label--left {
