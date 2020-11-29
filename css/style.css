@@ -227,7 +227,7 @@ input::placeholder {
   display: grid;
   grid-template-columns: minmax(15rem, 1fr);
   grid-template-rows: 3.5rem 2rem minmax(18.75rem, 1fr);
-  gap: 1rem;
+  grid-gap: 1rem;
   justify-items: center;
   align-items: center;
   min-height: 100vh;
@@ -287,10 +287,10 @@ input::placeholder {
   font-weight: 700;
   padding: calc(3rem / var(--global-font-size)) 0px;
   width: 100%;
-  line-height: var(--global-line-heigt);
+  line-height: calc(24rem / var(--global-font-size));
   border: 1px solid var(--global-color-action);
   color: var(--global-color-action-transparent);
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .c-toggle-option__label--left {
@@ -318,9 +318,8 @@ input::placeholder {
   height: 100%;
   display: flex;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
   /* padding: 0 var(--global-white-space-md); */
-  box-sizing: border-box;
 }
 
 /*
@@ -332,7 +331,8 @@ input::placeholder {
   border-radius: var(--global-border-borderRadius);
   box-shadow: var(--global-border-boxShadow);
   align-self: center;
-  height: 100%;
+  height: calc(100% - 20px);
+  /* Omslachtig!? */
   width: calc(100% - 2rem);
   transition: transform 0.5s ease-in;
 }
