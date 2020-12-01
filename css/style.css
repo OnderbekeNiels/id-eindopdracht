@@ -551,7 +551,7 @@ input::placeholder {
   --c-custom-input__email-borderColor: #c80000;
   --c-custom-input__email-boxShadow: 0 0 0 3px #c80000;
 }
-      
+
 .c-custom-input__submit {
   font-weight: 600;
   color: var(--global-color-light);
@@ -570,7 +570,7 @@ input::placeholder {
 
 .c-custom-input:active,
 .c-custom-input:focus {
-  box-shadow: 0 0 0 3px var(--global-color-neutral);
+  box-shadow: 0 0 0 3px var(--global-color-dark);
 }
 
 @media screen and (min-width: 43rem) {
