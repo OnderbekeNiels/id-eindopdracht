@@ -226,7 +226,7 @@ input::placeholder {
 .c-grid-app {
   display: grid;
   grid-template-columns: minmax(15rem, 1fr);
-  grid-template-rows: 3.5rem 2rem minmax(18.75rem, 1fr);
+  grid-template-rows: auto auto minmax(18.75rem, 1fr) auto;
   grid-gap: 1rem;
   justify-items: center;
   align-items: center;
@@ -313,13 +313,26 @@ input::placeholder {
   */
 
 .c-data {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
   overflow-x: hidden;
-  /* padding: 0 var(--global-white-space-md); */
+  height: 100%;
+  width: 100%;
+}
+
+.c-data-container {
+  width: 200vw;
+  display: flex;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.c-data-container__item {
+  width: 100vw;
+  height: 100%;
+  padding: 0 var(--global-white-space-md);
+}
+
+.u-show-table {
+  transform: translateX(-100vw);
 }
 
 /*
@@ -327,18 +340,10 @@ input::placeholder {
   */
 
 .c-map {
-  position: absolute;
   border-radius: var(--global-border-borderRadius);
   box-shadow: var(--global-border-boxShadow);
   align-self: center;
-  height: calc(100% - 20px);
-  /* Omslachtig!? */
-  width: calc(100% - 2rem);
-  transition: transform 0.5s ease-in;
-}
-
-.c-map--hide {
-  transform: translateX(-100vw);
+  height: 100%;
 }
 
 /*
@@ -346,19 +351,13 @@ input::placeholder {
   */
 
 .c-table {
-  position: absolute;
-  width: calc(100% - 2rem);
+  width: 100%;
   max-width: 32rem;
   background-color: var(--global-color-light);
   padding: var(--global-white-space-s);
   border-radius: var(--global-border-borderRadius);
   box-shadow: var(--global-border-boxShadow);
-  margin: 0;
-  transition: transform 0.5s ease-in;
-}
-
-.c-table--hide {
-  transform: translateX(100vw);
+  margin: 0 auto;
 }
 
 .c-table__table-row {

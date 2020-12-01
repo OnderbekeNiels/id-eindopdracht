@@ -111,18 +111,17 @@ const listenToToggle = function () {
   const mapInput = document.querySelector(".c-toggle-option__input--map"),
     tableInput = document.querySelector(".c-toggle-option__input--table"),
     inputs = document.querySelectorAll(".c-toggle-option__input"),
-    map = document.querySelector(".c-map"),
-    table = document.querySelector(".c-table");
+    // map = document.querySelector(".c-map"),
+    // table = document.querySelector(".c-table");
+    dataContainer = document.querySelector(".c-data-container");
   for (const input of inputs) {
     input.addEventListener("change", function () {
       if (mapInput.checked) {
-        table.classList.add("c-table--hide");
-        map.classList.remove("c-map--hide");
+        dataContainer.classList.remove("u-show-table");
         getMap();
       }
       if (tableInput.checked) {
-        table.classList.remove("c-table--hide");
-        map.classList.add("c-map--hide");
+        dataContainer.classList.add("u-show-table");
         getTable();
       }
     });
