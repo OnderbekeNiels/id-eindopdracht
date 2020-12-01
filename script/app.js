@@ -42,7 +42,6 @@ const maakMarker = function (parkingObject) {
 };
 
 const initMap = function () {
-  console.log("init initiated!");
   map = L.map("mapid").setView([51.0544, 3.7238], 13);
   L.tileLayer(provider, { attribution: copyright }).addTo(map);
 };
@@ -108,11 +107,9 @@ const getTable = async function () {
 //#endregion
 
 const listenToToggle = function () {
-  const mapInput = document.querySelector(".c-toggle-option__input--map"),
-    tableInput = document.querySelector(".c-toggle-option__input--table"),
-    inputs = document.querySelectorAll(".c-toggle-option__input"),
-    // map = document.querySelector(".c-map"),
-    // table = document.querySelector(".c-table");
+  const mapInput = document.querySelector(".js-option-map"),
+    tableInput = document.querySelector(".js-option-table"),
+    inputs = document.querySelectorAll(".js-option"),
     dataContainer = document.querySelector(".c-data-container");
   for (const input of inputs) {
     input.addEventListener("change", function () {
