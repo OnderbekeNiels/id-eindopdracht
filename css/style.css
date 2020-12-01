@@ -8,6 +8,7 @@
 
   /* Whitespace */
 
+  --global-white-space-xs: calc(var(--global-baseline)/2);
   --global-white-space-s: var(--global-baseline);
   --global-white-space-md: calc(var(--global-baseline) * 2);
   --global-white-space-lg: calc(var(--global-baseline) * 3);
@@ -470,7 +471,7 @@ input::placeholder {
   font-size: 1rem;
   font-weight: 400;
   line-height: var(--global-line-heigt);
-  margin-bottom: calc(var(--global-baseline) * 2);
+  margin-bottom: var(--global-white-space-lg);
   color: var(--global-color-light);
   text-align: justify;
 }
@@ -522,9 +523,22 @@ input::placeholder {
 
 .c-custom-input__email {
   padding: calc(11rem / var(--global-font-size)) 0px
-    calc(11rem / var(--global-font-size)) 1rem;
+    calc(11rem / var(--global-font-size)) calc(15rem / var(--global-font-size));
   border: calc(1rem / var(--global-font-size)) solid
     var(--c-custom-input__email-borderColor, var(--global-color-action));
+  box-shadow: var(--c-custom-input__email-boxShadow);
+}
+
+.c-form-item--reverse-label{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.c-label__email{
+  color: var(--global-color-light);
+  font-weight: 700;
+  margin: 0  0 var(--global-white-space-s) 0;
+  font-size: calc(18rem/var(--global-font-size));
 }
 
 .c-custom-input__email::placeholder {
@@ -533,26 +547,30 @@ input::placeholder {
   line-height: var(--global-line-heigt);
 }
 
+.c-custom-input__email--invalid{
+  --c-custom-input__email-borderColor: #c80000;
+  --c-custom-input__email-boxShadow: 0 0 0 3px #c80000;
+}
+      
 .c-custom-input__submit {
   font-weight: 600;
   color: var(--global-color-light);
   background-color: var(--global-color-action);
-  border: calc(1rem / var(--global-font-size)) solid
-    var(--c-custom-input__submit-borderColor, var(--global-color-action));
+  border: 1px solid var(--global-color-action);
   text-align: center;
   padding: calc(11rem / var(--global-font-size)) 0px
     calc(11rem / var(--global-font-size)) 0px;
+  box-shadow: var(--c-custom-input__submit-boxShadow);
 }
 
 .c-custom-input:hover {
-  --c-custom-input__submit-borderColor: var(--global-color-light);
-  --c-custom-input__email-borderColor: var(--global-color-dark);
-  box-shadow: 0 0 0 3px var(--global-color-action);
+  --c-custom-input__email-boxShadow: 0 0 0 3px var(--global-color-action);
+  --c-custom-input__submit-boxShadow: 0 0 0 3px var(--global-color-light);
 }
 
 .c-custom-input:active,
 .c-custom-input:focus {
-  box-shadow: 0 0 0 3px var(--global-color-dark);
+  box-shadow: 0 0 0 3px var(--global-color-neutral);
 }
 
 @media screen and (min-width: 43rem) {

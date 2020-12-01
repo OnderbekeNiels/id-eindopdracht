@@ -27,6 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script src="./script/app.js"></script>
   </head>
   <body>
     <div class="c-grid-landindgspagina">
@@ -47,15 +48,14 @@
           easier without having to stress about a free space.
         </p>
         <form action="">
+          <div class="c-form-item--reverse-label">
+            <input class="c-custom-input c-custom-input__email js-email
+            u-mb__md" type="email" required
+            name="emailAddress" id="email" placeholder="e.g. user@domain.be" />
+            <label class="c-label__email" for="email">Your e-mail</label>
+          </div>
           <input
-            class="c-custom-input c-custom-input__email u-mb__md"
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Your email"
-          />
-          <input
-            class="c-custom-input c-custom-input__submit"
+            class="c-custom-input c-custom-input__submit js-submit"
             type="submit"
             value="Send me a reminder"
           />

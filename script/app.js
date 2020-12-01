@@ -128,8 +128,27 @@ const listenToToggle = function () {
   }
 };
 
+const listenToEmailInput = function () {
+  const emailInput = document.querySelector(".js-email");
+  const regexEmail = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+  emailInput.addEventListener("input", function(){
+      if(regexEmail.test(emailInput.value)){
+        emailInput.classList.remove('c-custom-input__email--invalid');
+      }
+      else{
+        emailInput.classList.add('c-custom-input__email--invalid');
+      }
+  });
+};
+
 document.addEventListener("DOMContentLoaded", function () {
-  initMap();
-  getMap();
-  listenToToggle();
+  if (document.querySelector(".is-app")) {
+    initMap();
+    getMap();
+    listenToToggle();
+  }
+
+  if (document.querySelector(".is-landingspagina")) {
+    listenToEmailInput();
+  }
 });
