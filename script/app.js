@@ -34,19 +34,19 @@ const getCapacityIcon = function (availableSpace) {
 
 var greenIcon = L.icon({
     iconUrl: './img/location_green.svg',
-    iconSize:     [40, 40], // size of the icon
+    iconSize:     [50, 50], // size of the icon
     popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
 });
 
 var orangeIcon = L.icon({
     iconUrl: './img/location_orange.svg',
-    iconSize:     [40, 40], // size of the icon
+    iconSize:     [50, 50], // size of the icon
     popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
 });
 
 var redIcon = L.icon({
     iconUrl: './img/location_red.svg',
-    iconSize:     [40, 40], // size of the icon
+    iconSize:     [50, 50], // size of the icon
     popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
 });
 
