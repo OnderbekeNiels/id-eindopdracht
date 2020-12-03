@@ -16,9 +16,39 @@ const getCapacityColor = function (availableSpace) {
   }
 };
 
+const getCapacityIcon = function (availableSpace) {
+    if (availableSpace <= 50) {
+      return redIcon;
+    } else if (availableSpace <= 150) {
+      return oragneIcon;
+    } else {
+      return greenIcon;
+    }
+  };
+
 //#endregion
 
 //#region *** Map Visualisation ***
+
+// Custom Icons
+
+var greenIcon = L.icon({
+    iconUrl: './img/location_green.svg',
+    iconSize:     [40, 40], // size of the icon
+    popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
+});
+
+var orangeIcon = L.icon({
+    iconUrl: './img/location_orange.svg',
+    iconSize:     [40, 40], // size of the icon
+    popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
+});
+
+var redIcon = L.icon({
+    iconUrl: './img/location_red.svg',
+    iconSize:     [40, 40], // size of the icon
+    popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
+});
 
 const provider =
   "https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png";
@@ -30,10 +60,9 @@ const maakMarker = function (parkingObject) {
   // console.log(coords)
   const lastUpdateTime = new Date(parkingObject.updateTime);
   lastUpdateTime.setHours(lastUpdateTime.getHours() - 2);
-  const colorClass = getCapacityColor(parkingObject.placesLeft);
-  const arr_coords = parkingObject.coord;
+  const colorClass = getCapacityColor(parkingObject.placesLeft), arr_coords = parkingObject.coord;
   layergroup.clearLayers();
-  let marker = L.marker(arr_coords).addTo(layergroup);
+  let marker = L.marker(arr_coords, {icon: getCapacityIcon(parkingObject.placesLeft)}).addTo(layergroup);
   marker.bindPopup(
     `<p class="c-marker-content c-marker-content__places-left ${colorClass}">${
       parkingObject.placesLeft
