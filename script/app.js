@@ -131,8 +131,10 @@ const listenToEmailInput = function () {
   emailInput.addEventListener("input", function(){
       if(regexEmail.test(emailInput.value)){
         emailInput.classList.remove('c-custom-input__email--invalid');
+        emailInput.classList.add('c-custom-input__email--valid');
       }
       else{
+        emailInput.classList.remove('c-custom-input__email--valid');
         emailInput.classList.add('c-custom-input__email--invalid');
       }
   });

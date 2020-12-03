@@ -524,6 +524,7 @@ input::placeholder {
 }
 
 .c-custom-input__email {
+  color: var(--c-custom-input__email-color, var(--global-color-action));
   padding: calc(11rem / var(--global-font-size)) 0px
     calc(11rem / var(--global-font-size)) calc(15rem / var(--global-font-size));
   border: calc(1rem / var(--global-font-size)) solid
@@ -550,8 +551,15 @@ input::placeholder {
 }
 
 .c-custom-input__email--invalid {
+  --c-custom-input__email-color: #c80000;
   --c-custom-input__email-borderColor: #c80000;
   --c-custom-input__email-boxShadow: 0 0 0 3px #c8000099;
+}
+
+.c-custom-input__email--valid{
+  --c-custom-input__email-color: #0e9b2a;
+  --c-custom-input__email-borderColor: #0e9b2a;
+  --c-custom-input__email-boxShadow: 0 0 0 3px #0e9b2a99;
 }
 
 .c-custom-input__submit {
