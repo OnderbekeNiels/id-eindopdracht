@@ -106,6 +106,8 @@ const getTable = async function () {
 
 //#endregion
 
+//#region *** Event Listeners ***
+
 const listenToToggle = function () {
   const mapInput = document.querySelector(".js-option-map"),
     tableInput = document.querySelector(".js-option-table"),
@@ -125,18 +127,33 @@ const listenToToggle = function () {
   }
 };
 
-const listenToEmailInput = function () {
-  const emailInput = document.querySelector(".js-email");
-  const regexEmail = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
-  emailInput.addEventListener("input", function(){
-      if(regexEmail.test(emailInput.value)){
-        emailInput.classList.remove('c-custom-input__email--invalid');
-        emailInput.classList.add('c-custom-input__email--valid');
-      }
-      else{
-        emailInput.classList.remove('c-custom-input__email--valid');
-        emailInput.classList.add('c-custom-input__email--invalid');
-      }
+const checkEmail = function (emailInput) {
+  const regexEmail = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  );
+  return regexEmail.test(emailInput);
+};
+
+const listenToSubmit = function () {
+  const submit = document.querySelector(".js-submit"),
+    emailInput = document.querySelector(".js-email");
+  submit.addEventListener("click", function () {
+    if (!checkEmail(emailInput.value)) {
+      emailInput.classList.add("c-custom-input__email--invalid");
+      listenToEmailInput(emailInput);
+    } else {
+      emailInput.deleteEventListener();
+    }
+  });
+};
+
+const listenToEmailInput = function (emailInput) {
+  emailInput.addEventListener("input", function () {
+    if (checkEmail(emailInput.value)) {
+      emailInput.classList.remove("c-custom-input__email--invalid");
+    } else {
+      emailInput.classList.add("c-custom-input__email--invalid");
+    }
   });
 };
 
@@ -148,6 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (document.querySelector(".is-landingspagina")) {
-    listenToEmailInput();
+    listenToSubmit();
   }
 });

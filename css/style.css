@@ -556,12 +556,6 @@ input::placeholder {
   --c-custom-input__email-boxShadow: 0 0 0 3px #c8000099;
 }
 
-.c-custom-input__email--valid{
-  --c-custom-input__email-color: #0e9b2a;
-  --c-custom-input__email-borderColor: #0e9b2a;
-  --c-custom-input__email-boxShadow: 0 0 0 3px #0e9b2a99;
-}
-
 .c-custom-input__submit {
   font-weight: 600;
   color: var(--global-color-beta);
