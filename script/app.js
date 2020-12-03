@@ -127,35 +127,52 @@ const listenToToggle = function () {
   }
 };
 
-const checkEmail = function (emailInput) {
+let submit, email;
+
+const doubleCheckEmail = function () {
+  if (IsValidEmail(email.value) && !isEmpty(email.value)) {
+    email.classList.remove("c-custom-input__email--invalid");
+    email.removeEventListener("input", doubleCheckEmail);
+  } else {
+    email.classList.add("c-custom-input__email--invalid");
+  }
+};
+
+const IsValidEmail = function (emailInput) {
   const regexEmail = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   );
   return regexEmail.test(emailInput);
 };
 
-const listenToSubmit = function () {
-  const submit = document.querySelector(".js-submit"),
-    emailInput = document.querySelector(".js-email");
-  submit.addEventListener("click", function () {
-    if (!checkEmail(emailInput.value)) {
-      emailInput.classList.add("c-custom-input__email--invalid");
-      listenToEmailInput(emailInput);
+const isEmpty = function (fieldValue) {
+  return !fieldValue || !fieldValue.length;
+};
+
+const enableEventListeners = function () {
+  email = document.querySelector(".js-email");
+  submit = document.querySelector(".js-submit");
+
+  email.addEventListener("blur", function () {
+    if (!IsValidEmail(email.value) || isEmpty(email.value)) {
+      email.classList.add("c-custom-input__email--invalid");
+      email.addEventListener("input", doubleCheckEmail);
     } else {
-      emailInput.deleteEventListener();
+      email.removeEventListener("input", doubleCheckEmail);
+    }
+  });
+
+  submit.addEventListener("click", function () {
+    if (!IsValidEmail(email.value)) {
+      email.classList.add("c-custom-input__email--invalid");
+      email.addEventListener("input", doubleCheckEmail);
+    } else {
+      email.removeEventListener("input", doubleCheckEmail);
     }
   });
 };
 
-const listenToEmailInput = function (emailInput) {
-  emailInput.addEventListener("input", function () {
-    if (checkEmail(emailInput.value)) {
-      emailInput.classList.remove("c-custom-input__email--invalid");
-    } else {
-      emailInput.classList.add("c-custom-input__email--invalid");
-    }
-  });
-};
+//#endregion
 
 document.addEventListener("DOMContentLoaded", function () {
   if (document.querySelector(".is-app")) {
@@ -165,6 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (document.querySelector(".is-landingspagina")) {
-    listenToSubmit();
+    enableEventListeners();
   }
 });
