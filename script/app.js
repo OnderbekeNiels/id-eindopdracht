@@ -1,5 +1,9 @@
 "use strict";
 
+// Form validatie
+
+let submit, email;
+
 //#region *** Global Functions ***
 
 const getCapacityColor = function (availableSpace) {
@@ -126,8 +130,6 @@ const listenToToggle = function () {
     });
   }
 };
-
-let submit, email;
 
 const doubleCheckEmail = function () {
   if (IsValidEmail(email.value) && !isEmpty(email.value)) {

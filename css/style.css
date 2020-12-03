@@ -7,7 +7,6 @@
   --global-baseline: calc(1rem / 2);
 
   /* Whitespace */
-
   --global-white-space-xs: calc(var(--global-baseline) / 2);
   --global-white-space-s: var(--global-baseline);
   --global-white-space-md: calc(var(--global-baseline) * 2);
@@ -27,8 +26,15 @@
   --global-border-borderRadius: 20px;
   --global-border-boxShadow: 0 3px 6px 0 rgba(0, 0, 0, 0.29);
 
+  /* Fonts */
   --global-font-size: 16;
   --global-line-heigt: 1.333;
+
+  /* Transitions */
+  --global-transitionSpeed-slow: 0.4s;
+  --global-transitionSpeed-md: 0.3s;
+  --global-transitionSpeed-fast: 0.2s;
+
 }
 
 /*------------------------------------*\
@@ -292,7 +298,7 @@ input::placeholder {
   line-height: calc(24rem / var(--global-font-size));
   border: 1px solid var(--global-color-action);
   color: var(--global-color-action-transparent);
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color var(--global-transitionSpeed-fast) ease-in-out, color var(--global-transitionSpeed-fast) ease-in-out;
 }
 
 .c-toggle-option__label--left {
@@ -315,17 +321,26 @@ input::placeholder {
   */
 
 .c-data {
+
+  --c-data-container-transitionSpeed: var(--global-transitionSpeed-slow);
+
   overflow-x: hidden;
   height: 100%;
   width: 100%;
   padding-bottom: var(--global-white-space-s);
 }
 
+@media screen and (min-width: 50rem) {
+  .c-data {
+    --c-data-container-transitionSpeed: var(--global-transitionSpeed-md);
+  }
+}
+
 .c-data-container {
   width: 200vw;
   display: flex;
   height: 100%;
-  transition: transform 0.2s ease;
+  transition: transform var(--c-data-container-transitionSpeed) ease-out;
 }
 
 .c-data-container__item {
@@ -506,79 +521,6 @@ input::placeholder {
   font-size: calc(14rem / var(--global-font-size));
 }
 
-/*
-      COMPONENT: Custom input lp
-  */
-
-.c-custom-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  border-radius: var(--global-border-borderRadius);
-  font-family: inherit;
-  color: var(--global-color-action);
-  font-size: calc(18rem / var(--global-font-size));
-  line-height: var(--global-line-heigt);
-  outline: none;
-}
-
-.c-custom-input__email {
-  color: var(--c-custom-input__email-color, var(--global-color-action));
-  padding: calc(11rem / var(--global-font-size)) 0px
-    calc(11rem / var(--global-font-size)) calc(15rem / var(--global-font-size));
-  border: calc(1rem / var(--global-font-size)) solid
-    var(--c-custom-input__email-borderColor, var(--global-color-action));
-  box-shadow: var(--c-custom-input__email-boxShadow);
-}
-
-.c-form-item--reverse-label {
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.c-label__email {
-  color: var(--global-color-beta);
-  font-weight: 700;
-  margin: 0 0 var(--global-white-space-s) 0;
-  font-size: calc(18rem / var(--global-font-size));
-}
-
-.c-custom-input__email::placeholder {
-  color: var(--global-color-action);
-  font-size: calc(18rem / var(--global-font-size));
-  line-height: var(--global-line-heigt);
-}
-
-.c-custom-input__email--invalid {
-  --c-custom-input__email-color: #c80000;
-  --c-custom-input__email-borderColor: #c80000;
-  --c-custom-input__email-boxShadow: 0 0 0 3px #c8000099;
-}
-
-.c-custom-input__submit {
-  font-weight: 600;
-  color: var(--global-color-beta);
-  background-color: var(--global-color-action);
-  border: 1px solid var(--global-color-action);
-  text-align: center;
-  padding: calc(11rem / var(--global-font-size)) 0px
-    calc(11rem / var(--global-font-size)) 0px;
-  box-shadow: var(--c-custom-input__submit-boxShadow);
-}
-
-.c-custom-input:hover {
-  --c-custom-input__email-boxShadow: 0 0 0 3px
-    var(--global-color-action-transparent);
-  --c-custom-input__submit-boxShadow: 0 0 0 3px
-    var(--global-color-beta-transparent);
-}
-
-.c-custom-input:active,
-.c-custom-input:focus {
-  box-shadow: 0 0 0 3px var(--global-color-alpha-transparent);
-}
-
 @media screen and (min-width: 43rem) {
   .c-grid-landindgspagina {
     grid-template-columns: 1fr 1fr;
@@ -621,6 +563,76 @@ input::placeholder {
   .c-footer-landingspagina {
     grid-column: span 2;
   }
+}
+
+/*
+      COMPONENT: Custom input lp
+  */
+
+.c-custom-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  border-radius: var(--global-border-borderRadius);
+  font-family: inherit;
+  color: var(--global-color-action);
+  font-size: calc(18rem / var(--global-font-size));
+  line-height: calc(24rem / var(--global-font-size));
+  padding: calc(11rem / var(--global-font-size)) calc(15rem / var(--global-font-size));
+  outline: none;
+}
+
+.c-custom-input:hover {
+  --c-custom-input__email-boxShadow: 0 0 0 3px
+    var(--global-color-action-transparent);
+  --c-custom-input__submit-boxShadow: 0 0 0 3px
+    var(--global-color-beta-transparent);
+}
+
+.c-custom-input:active,
+.c-custom-input:focus {
+  box-shadow: 0 0 0 3px var(--global-color-alpha-transparent);
+}
+
+.c-custom-input__email {
+  color: var(--c-custom-input__email-color, var(--global-color-action));
+  border: 1px solid
+    var(--c-custom-input__email-borderColor, var(--global-color-action));
+  box-shadow: var(--c-custom-input__email-boxShadow);
+}
+
+.c-custom-input__label {
+  color: var(--global-color-beta);
+  font-weight: 700;
+  margin: 0 0 var(--global-white-space-s) 0;
+  font-size: calc(18rem / var(--global-font-size));
+}
+
+.c-custom-input__email::placeholder {
+  color: var(--global-color-action);
+  font-size: calc(18rem / var(--global-font-size));
+  line-height: var(--global-line-heigt);
+}
+
+.c-custom-input__email--invalid {
+  --c-custom-input__email-color: #c80000;
+  --c-custom-input__email-borderColor: #c80000;
+  --c-custom-input__email-boxShadow: 0 0 0 3px #c8000099;
+}
+
+.c-form-item--reverse-label {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.c-custom-input__submit {
+  font-weight: 600;
+  color: var(--global-color-beta);
+  background-color: var(--global-color-action);
+  border: 1px solid var(--global-color-action);
+  text-align: center;
+  box-shadow: var(--c-custom-input__submit-boxShadow);
 }
 
 /*------------------------------------*\
