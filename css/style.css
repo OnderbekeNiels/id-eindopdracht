@@ -39,8 +39,6 @@
   --global-form-field-font-size: calc(18rem / var(--global-font-size));
   --global-form-field-padding: calc(11rem / var(--global-font-size))
     calc(15rem / var(--global-font-size));
-
-
 }
 
 /*------------------------------------*\
@@ -431,7 +429,7 @@ input::placeholder {
 
 .c-marker-content__places-left {
   font-size: calc(24rem / var(--global-font-size));
-  margin-bottom: var(--global-white-space-s);
+  margin-bottom: var(--global-white-space-md);
   font-weight: 700;
 }
 
@@ -684,7 +682,6 @@ input::placeholder {
 .c-btn-submit:active {
   --c-btn-submit-boxShadow: var(--c-btn-submit-focus-boxShadow);
 }
-
 
 /*------------------------------------*\
   #Utitlities
