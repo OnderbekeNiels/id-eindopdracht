@@ -680,8 +680,8 @@ input::placeholder {
   --c-btn-submit-boxShadow: var(--c-btn-submit-hover-boxShadow);
 }
 
-.c-btn-sumbit:focus,
-.c-btn-sumbit:active {
+.c-btn-submit:focus,
+.c-btn-submit:active {
   --c-btn-submit-boxShadow: var(--c-btn-submit-focus-boxShadow);
 }
 
