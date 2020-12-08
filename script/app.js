@@ -4,6 +4,7 @@
 
 let submit, email;
 
+
 //#region *** Global Functions ***
 
 const getCapacityColor = function (availableSpace) {
@@ -17,38 +18,20 @@ const getCapacityColor = function (availableSpace) {
 };
 
 const getCapacityIcon = function (availableSpace) {
-    if (availableSpace <= 50) {
-      return redIcon;
-    } else if (availableSpace <= 150) {
-      return oragneIcon;
-    } else {
-      return greenIcon;
-    }
-  };
+  if (availableSpace <= 50) {
+    return redIcon;
+  } else if (availableSpace <= 150) {
+    return oragneIcon;
+  } else {
+    return greenIcon;
+  }
+};
 
 //#endregion
 
 //#region *** Map Visualisation ***
 
-// Custom Icons
-
-var greenIcon = L.icon({
-    iconUrl: './img/location_green.svg',
-    iconSize:     [50, 50], // size of the icon
-    popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
-});
-
-var orangeIcon = L.icon({
-    iconUrl: './img/location_orange.svg',
-    iconSize:     [50, 50], // size of the icon
-    popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
-});
-
-var redIcon = L.icon({
-    iconUrl: './img/location_red.svg',
-    iconSize:     [50, 50], // size of the icon
-    popupAnchor:  [0, -16] // point from which the popup should open relative to the iconAnchor
-});
+var greenIcon, orangeIcon, redIcon;
 
 const provider =
   "https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png";
@@ -60,23 +43,46 @@ const maakMarker = function (parkingObject) {
   // console.log(coords)
   const lastUpdateTime = new Date(parkingObject.updateTime);
   lastUpdateTime.setHours(lastUpdateTime.getHours() - 2);
-  const colorClass = getCapacityColor(parkingObject.placesLeft), arr_coords = parkingObject.coord;
+  const colorClass = getCapacityColor(parkingObject.placesLeft),
+    arr_coords = parkingObject.coord;
   layergroup.clearLayers();
-  let marker = L.marker(arr_coords, {icon: getCapacityIcon(parkingObject.placesLeft)}).addTo(layergroup);
+  let marker = L.marker(arr_coords, {
+    icon: getCapacityIcon(parkingObject.placesLeft),
+  }).addTo(layergroup);
   marker.bindPopup(
-    `<p class="c-marker-content c-marker-content__places-left ${colorClass}">${
+    `<div class="c-marker-content c-marker-content__places-left ${colorClass}">${
       parkingObject.placesLeft
-    } places left</p><p class="c-marker-content c-marker-content__name">${
+    } places left</div><div class="c-marker-content c-marker-content__name">${
       parkingObject.name
-    }</p><p class="c-marker-content">${
+    }</div><div class="c-marker-content c-marker-content__details">${
       parkingObject.address
-    }</p><p class="c-marker-content">last update: ${lastUpdateTime.toLocaleTimeString()}</p>`
+    }</div><div class="c-marker-content c-marker-content__details">last update: ${lastUpdateTime.toLocaleTimeString()}</div>`
   );
 };
 
 const initMap = function () {
   map = L.map("mapid").setView([51.0544, 3.7238], 13);
   L.tileLayer(provider, { attribution: copyright }).addTo(map);
+
+  // Custom Icons
+
+  greenIcon = L.icon({
+    iconUrl: "./img/location_green.svg",
+    iconSize: [50, 50], // size of the icon
+    popupAnchor: [0, -16], // point from which the popup should open relative to the iconAnchor
+  });
+
+  orangeIcon = L.icon({
+    iconUrl: "./img/location_orange.svg",
+    iconSize: [50, 50], // size of the icon
+    popupAnchor: [0, -16], // point from which the popup should open relative to the iconAnchor
+  });
+
+  redIcon = L.icon({
+    iconUrl: "./img/location_red.svg",
+    iconSize: [50, 50], // size of the icon
+    popupAnchor: [0, -16], // point from which the popup should open relative to the iconAnchor
+  });
 };
 
 const showPointers = function (records) {
@@ -149,11 +155,11 @@ const listenToToggle = function () {
   for (const input of inputs) {
     input.addEventListener("change", function () {
       if (mapInput.checked) {
-        dataContainer.classList.remove("u-show-table");
+        dataContainer.classList.remove("c-table--visible");
         getMap();
       }
       if (tableInput.checked) {
-        dataContainer.classList.add("u-show-table");
+        dataContainer.classList.add("c-table--visible");
         getTable();
       }
     });
