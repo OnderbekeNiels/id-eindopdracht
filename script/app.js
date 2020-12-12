@@ -4,7 +4,6 @@
 
 let submit, email;
 
-
 //#region *** Global Functions ***
 
 const getCapacityColor = function (availableSpace) {
@@ -40,9 +39,7 @@ const copyright =
 let map, layergroup;
 
 const maakMarker = function (parkingObject) {
-  // console.log(coords)
   const lastUpdateTime = new Date(parkingObject.updateTime);
-  lastUpdateTime.setHours(lastUpdateTime.getHours() - 2);
   const colorClass = getCapacityColor(parkingObject.placesLeft),
     arr_coords = parkingObject.coord;
   layergroup.clearLayers();
@@ -122,6 +119,7 @@ const showTable = function (records) {
     Places left
   </th>
 </tr>`;
+  records.sort((a, b) => (a.fields.name > b.fields.name ? 1 : -1));
   for (const record of records) {
     const colorClass = getCapacityColor(record.fields.availablecapacity);
     htmlTable += ` <tr class="c-table__table-row">
