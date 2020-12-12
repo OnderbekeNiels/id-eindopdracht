@@ -231,7 +231,14 @@ input::placeholder {
   \*------------------------------------*/
 
 .o-hide-accessible {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 /*------------------------------------*\
@@ -295,14 +302,20 @@ input::placeholder {
   --c-toggle-backgroundColor: var(--global-color-beta);
 
   /* Action styles */
-  --c-toggle-focus-boxShadow: 0 0 0 3px var(--global-color-action);
   --c-toggle-checked-color: var(--global-color-beta);
   --c-toggle-checked-backgroundColor: var(--global-color-action);
+  --c-toggle-focus-color: var(--global-color-beta);
+  --c-toggle-focus-backgroundColor: var(--global-color-alpha);
 
   display: flex;
   justify-content: space-between;
   width: calc(var(--global-baseline) * 26);
   height: 100%;
+}
+
+.c-toggle-option{
+  margin: 0;
+  display: inline;
 }
 
 .c-toggle-option__label {
@@ -311,7 +324,7 @@ input::placeholder {
   font-size: 1rem;
   font-weight: 700;
   padding: calc(3rem / var(--global-font-size)) 0px;
-  width: 100%;
+  width: calc(var(--global-baseline) * 13);
   line-height: calc(24rem / var(--global-font-size));
   border: 1px solid var(--c-toggle-borderColor);
   color: var(--c-toggle-color);
@@ -335,10 +348,15 @@ input::placeholder {
   --c-toggle-backgroundColor: var(--c-toggle-checked-backgroundColor);
 }
 
-.c-toggle-option__input:focus + .c-toggle-option__label,
-.c-toggle-option__input:active + .c-toggle-option__label {
-  --c-toggle-boxShadow: var(--c-toggle-focus-boxShadow);
+
+.c-toggle-option__input:active + .c-toggle-option__label,
+.c-toggle-option__input:focus + .c-toggle-option__label {
+  --c-toggle-backgroundColor: var(--c-toggle-focus-backgroundColor);
+  --c-toggle-color: var(--c-toggle-focus-color);
 }
+
+
+
 
 /*
       COMPONENT: Data

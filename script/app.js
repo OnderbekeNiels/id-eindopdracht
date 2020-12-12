@@ -4,12 +4,14 @@
 
 let submit, email;
 
+let capacityLow = 50, capacityMed = 200;
+
 //#region *** Global Functions ***
 
 const getCapacityColor = function (availableSpace) {
-  if (availableSpace <= 50) {
+  if (availableSpace <= capacityLow) {
     return "u-space-left--small";
-  } else if (availableSpace <= 150) {
+  } else if (availableSpace <= capacityMed) {
     return "u-space-left--medium";
   } else {
     return "u-space-left--large";
@@ -17,10 +19,10 @@ const getCapacityColor = function (availableSpace) {
 };
 
 const getCapacityIcon = function (availableSpace) {
-  if (availableSpace <= 50) {
+  if (availableSpace <= capacityLow) {
     return redIcon;
-  } else if (availableSpace <= 150) {
-    return oragneIcon;
+  } else if (availableSpace <= capacityMed) {
+    return orangeIcon;
   } else {
     return greenIcon;
   }
@@ -39,7 +41,6 @@ const copyright =
 let map, layergroup;
 
 const maakMarker = function (parkingObject) {
-  const lastUpdateTime = new Date(parkingObject.updateTime);
   const colorClass = getCapacityColor(parkingObject.placesLeft),
     arr_coords = parkingObject.coord;
   layergroup.clearLayers();
@@ -53,7 +54,7 @@ const maakMarker = function (parkingObject) {
       parkingObject.name
     }</div><div class="c-marker-content c-marker-content__details">${
       parkingObject.address
-    }</div><div class="c-marker-content c-marker-content__details">last update: ${lastUpdateTime.toLocaleTimeString()}</div>`
+    }</div><div class="c-marker-content c-marker-content__details">last update: ${parkingObject.updateTime}</div>`
   );
 };
 
@@ -83,6 +84,7 @@ const initMap = function () {
 };
 
 const showPointers = function (records) {
+  records.sort((a, b) => (a.fields.name > b.fields.name ? 1 : -1));
   for (const record of records) {
     layergroup = L.layerGroup().addTo(map);
     const parkingObject = {
