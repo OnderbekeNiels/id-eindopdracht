@@ -4,9 +4,10 @@
 
 let submit, email;
 
-let capacityLow = 50, capacityMed = 200;
 
 //#region *** Global Functions ***
+
+let capacityLow = 50, capacityMed = 200;
 
 const getCapacityColor = function (availableSpace) {
   if (availableSpace <= capacityLow) {
