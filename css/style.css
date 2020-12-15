@@ -313,7 +313,7 @@ input::placeholder {
   height: 100%;
 }
 
-.c-toggle-option{
+.c-toggle-option {
   margin: 0;
   display: inline;
 }
@@ -348,15 +348,11 @@ input::placeholder {
   --c-toggle-backgroundColor: var(--c-toggle-checked-backgroundColor);
 }
 
-
 .c-toggle-option__input:active + .c-toggle-option__label,
 .c-toggle-option__input:focus + .c-toggle-option__label {
   --c-toggle-backgroundColor: var(--c-toggle-focus-backgroundColor);
   --c-toggle-color: var(--c-toggle-focus-color);
 }
-
-
-
 
 /*
       COMPONENT: Data
@@ -477,7 +473,7 @@ input::placeholder {
 .c-grid-landingspagina {
   display: grid;
   grid-template-columns: minmax(15rem, auto);
-  gap: 1rem;
+  gap: 1.5rem;
   min-height: 100vh;
 }
 
@@ -497,12 +493,12 @@ input::placeholder {
 .c-header-landingspagina__title {
   font-size: calc(40rem / var(--global-font-size));
   line-height: var(--global-line-heigt);
-  margin: var(--global-white-space-lg) 0 var(--global-white-space-s) 0;
+  margin: var(--global-white-space-lg) 0 var(--global-white-space-xs) 0;
 }
 
 .c-header-landingspagina__sub-title {
   font-size: 1rem;
-  line-height: calc(var(--global-baseline) * 3);
+  line-height: var(--global-line-heigt);
   margin-bottom: 0;
 }
 
@@ -562,8 +558,8 @@ input::placeholder {
 
 @media screen and (min-width: 43rem) {
   .c-grid-landingspagina {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
     grid-gap: calc(var(--global-baseline) * 8);
   }
 
