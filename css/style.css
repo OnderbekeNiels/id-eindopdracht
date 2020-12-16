@@ -709,7 +709,7 @@ input::placeholder {
   padding-right: calc(var(--global-baseline) * 2);
 }
 
-.u-max-width__content {
+.u-max-width--sm {
   max-width: 22rem;
 }
 
@@ -730,7 +730,7 @@ input::placeholder {
 }
 
 @media screen and (min-width: 90rem) {
-  .u-max-width__content {
+  .u-max-width--sm {
     max-width: 26rem;
   }
 
