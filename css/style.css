@@ -33,7 +33,7 @@
   /* Transition speeds */
   --global-transitionSpeed-slow: 0.4s;
   --global-transitionSpeed-md: 0.3s;
-  --global-transitionSpeed-fast: 0.2s;
+  --global-transitionSpeed-fast: 0.1s;
 
   /* Form */
   --global-form-field-font-size: calc(18rem / var(--global-font-size));
