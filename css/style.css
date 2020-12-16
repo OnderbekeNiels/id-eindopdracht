@@ -68,7 +68,6 @@ html {
     var(--global-color-alpha),
     var(--global-color-beta)
   );
-  /* --landingspagina--backgroundColor: var(--global--color--dark) */
 }
 
 *,
@@ -76,13 +75,6 @@ html {
 *:after {
   box-sizing: inherit;
 }
-
-/*
-  * Remove text-shadow in selection highlight:
-  * https://twitter.com/miketaylr/status/12228805301
-  *
-  * Customize the background color to match your design.
-  */
 
 ::-moz-selection {
   background: var(--global-color-action);

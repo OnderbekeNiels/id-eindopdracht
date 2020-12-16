@@ -85,7 +85,6 @@ const initMap = function () {
 };
 
 const showPointers = function (records) {
-  records.sort((a, b) => (a.fields.name > b.fields.name ? 1 : -1));
   for (const record of records) {
     layergroup = L.layerGroup().addTo(map);
     const parkingObject = {
